@@ -12,11 +12,11 @@ const Start = document.getElementById("startSorting")
 
 var speedOfVisualization=visualizationSpeedSlider.value
 var randomArray=[];
-var setSizeOfArray=arraySizeSlider.value
+var setSizeOfArray=10
 
 
 arraySizeSlider.addEventListener('change',()=>{
-    setSizeOfArray=arraySizeSlider.value
+    setSizeOfArray=10
     removeAllChild()
     randomArray=createRandomArray(randomArray,setSizeOfArray);
     addArrayBars(setSizeOfArray)
@@ -35,7 +35,7 @@ function createRandomArray(randomArray, sizeOfArray) {
         let x = Math.floor((Math.random()*65)+1)
         randomArray.push(x)    
     }
-    return randomArray
+    return [10,3,2,7,4,5,9,1,8,6]
 }
 
 function addArrayBars(setSize) {
@@ -70,10 +70,23 @@ Randomize.addEventListener("click",()=>{
     addArrayBars(setSizeOfArray)
 })
 
+function swapDivs(strm) {
+    div1=arrayBar.childNodes[1]
+    div1.style.backgroundColor="black"
+    div2=arrayBar.childNodes[9]
+    div2.style.backgroundColor="green"
+}
+
 Start.addEventListener("click",()=>{
-    sorted_arry=Sort_by_Insertion(randomArray, arrayBar, speedOfVisualization)
+    Sort_by_Merging(randomArray, arrayBar, speedOfVisualization)
+    // arrayBar.insertBefore(div1,arrayBar.children[9])    
+    // console.log(div1.isEqualNode(arrayBar.childNodes[6]));
+    // // arrayBar.childNodes[2].after(div2)
+    // // arrayBar.insertBefore(div2, arrayBar.firstChild)  
+    // arrayBar.childNodes[0].after(div2)  
 })
 
 
 randomArray=createRandomArray(randomArray,setSizeOfArray);
 addArrayBars(setSizeOfArray)
+// swapDivs("wait")

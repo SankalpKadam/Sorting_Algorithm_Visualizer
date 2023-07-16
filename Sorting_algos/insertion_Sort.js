@@ -1,12 +1,3 @@
-const intervalArray=[400,200,100,50,1]
-
-const randomInterval =(keyBar, speedOfVisualization)=> new Promise((res)=>{
-    keyBar.style.backgroundColor="red"
-    setTimeout(res, intervalArray[speedOfVisualization-1])})
-
-const randomInterval2 =(greaterNode, speedOfVisualization)=> new Promise((res)=>{
-        greaterNode.style.backgroundColor="blue"
-        setTimeout(res, intervalArray[speedOfVisualization])})
 
 async function Sort_by_Insertion(arr, arrayBar, speedOfVisualization) {
     for (let i = 1; i < arr.length; i++) {

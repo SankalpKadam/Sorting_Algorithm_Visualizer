@@ -16,7 +16,7 @@ var setSizeOfArray=10
 
 
 arraySizeSlider.addEventListener('change',()=>{
-    setSizeOfArray=10
+    setSizeOfArray=arraySizeSlider.value
     removeAllChild()
     randomArray=createRandomArray(randomArray,setSizeOfArray);
     addArrayBars(setSizeOfArray)
@@ -35,7 +35,7 @@ function createRandomArray(randomArray, sizeOfArray) {
         let x = Math.floor((Math.random()*65)+1)
         randomArray.push(x)    
     }
-    return [10,3,2,7,4,5,9,1,8,6]
+    return [2,2,4,18,7,1,6,4,20,19]
 }
 
 function addArrayBars(setSize) {
@@ -71,18 +71,22 @@ Randomize.addEventListener("click",()=>{
 })
 
 function swapDivs(strm) {
-    div1=arrayBar.childNodes[1]
+    div1=arrayBar.childNodes[0]
     div1.style.backgroundColor="black"
-    div2=arrayBar.childNodes[9]
+    div2=arrayBar.childNodes[3]
     div2.style.backgroundColor="green"
 }
 
+divtemp=arrayBar.childNodes[1]
 Start.addEventListener("click",()=>{
-    Sort_by_Merging(randomArray, arrayBar, speedOfVisualization)
-    // arrayBar.insertBefore(div1,arrayBar.children[9])    
+    // arrayBar.insertBefore(arrayBar.childNodes[1],arrayBar.firstChild)
+    // arrayBar.insertBefore(arrayBar.childNodes[4],arrayBar.lastChild)
+    
+    console.log(Sort_by_Merging(randomArray, arrayBar, speedOfVisualization));
+    // arrayBar.insertBefore(div1,arrayBar.children[3])    
     // console.log(div1.isEqualNode(arrayBar.childNodes[6]));
     // // arrayBar.childNodes[2].after(div2)
-    // // arrayBar.insertBefore(div2, arrayBar.firstChild)  
+    // arrayBar.insertBefore(div2, arrayBar.firstChild)  
     // arrayBar.childNodes[0].after(div2)  
 })
 

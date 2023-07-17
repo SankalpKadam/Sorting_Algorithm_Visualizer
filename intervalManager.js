@@ -9,5 +9,5 @@ const randomInterval2 =(greaterNode, speedOfVisualization)=> new Promise((res)=>
         setTimeout(res, intervalArray[speedOfVisualization])})
 
 const blankAwait=()=> new Promise((res)=>{
-    setTimeout(res,intervalArray[1])
+    setTimeout(res,10)
 })

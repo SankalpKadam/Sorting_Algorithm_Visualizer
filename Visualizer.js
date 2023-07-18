@@ -9,8 +9,8 @@ const randomInterval2 =(greaterNode, speedOfVisualization)=> new Promise((res)=>
         greaterNode.style.backgroundColor="blue"
         setTimeout(res, intervalArray[speedOfVisualization])})
 
-const blankAwait=()=> new Promise((res)=>{
-    setTimeout(res,10)
+const blankAwait=(speedOfVisualization)=> new Promise((res)=>{
+    setTimeout(res,intervalArray[speedOfVisualization])
 })
 
 function renderAllBars(ArrayBar) {

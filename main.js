@@ -82,22 +82,7 @@ function swapDivs(strm) {
 
 divtemp=arrayBar.childNodes[1]
 Start.addEventListener("click",()=>{
-    // arrayBar.insertBefore(arrayBar.childNodes[1],arrayBar.firstChild)
-    // arrayBar.insertBefore(arrayBar.childNodes[4],arrayBar.lastChild)
-    // arrayBar.children[2].after(div2)
-    console.log(Sort_by_Quick(randomArray, speedOfVisualization));
-    // arrayBar.insertBefore(div1,arrayBar.children[3])    
-    // console.log(div1.isEqualNode(arrayBar.childNodes[6]));
-    // // arrayBar.childNodes[2].after(div2)
-    // arrayBar.insertBefore(div2, arrayBar.firstChild)  
-    // arrayBar.childNodes[0].after(div2)
-    // arrayBar.replaceChild(newBar,arrayBar.childNodes[0])
-
-    // movechildren(arrayBar, 2,1)
-    // movechildren(arrayBar, 0,1)
-    // move2(arrayBar,0,1)
-    // move2(arrayBar,1,0)
-
+    
 })
 
 

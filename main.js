@@ -1,19 +1,36 @@
-// var msb=document.getElementById("mergeSortButton")
-// msb.addEventListener("click",()=>{
-//     console.log("clicked msb");
-//     msb.classList.add("sortButtonClicked")
-// })
-
 const visualizationSpeedSlider=document.getElementById("visualizationSpeedSlider");
 const arraySizeSlider=document.getElementById("arraySizeSlider");
-// const arrayBar=document.getElementById("arrayBar");
 const Randomize=document.getElementById("Randomize");
 const Start = document.getElementById("startSorting")
+const MergeSortButton = document.getElementById("mergeSortButton")
+const QuickSortButton = document.getElementById("quickSortButton")
+const InsertionSortButton = document.getElementById("insertionSortButton")
+const BubbleSortButton = document.getElementById("bubbleSortButton")
+const SelectionSortButton = document.getElementById("selectionSortButton")
+
 
 var speedOfVisualization=visualizationSpeedSlider.value
 var randomArray=[];
 var setSizeOfArray=arraySizeSlider.value
-// var randomArrayBar=[]
+var algorithm=null
+
+
+MergeSortButton.addEventListener("click",()=>{
+    algorithm="MergeSort"
+})
+QuickSortButton.addEventListener("click",()=>{
+    algorithm="QuickSort"
+})
+BubbleSortButton.addEventListener("click",()=>{
+    algorithm="BubbleSort"
+})
+SelectionSortButton.addEventListener("click",()=>{
+    algorithm="SelectionSort"
+})
+InsertionSortButton.addEventListener("click",()=>{
+    algorithm="InsertionSort"
+})
+
 
 arraySizeSlider.addEventListener('change',()=>{
     setSizeOfArray=arraySizeSlider.value
@@ -27,7 +44,24 @@ visualizationSpeedSlider.addEventListener('change',()=>{
     speedOfVisualization=visualizationSpeedSlider.value
 })
 
+function disableClicks() {
+    Randomize.classList.add("disable");
+    Start.classList.add("disable");
+    visualizationSpeedSlider.classList.add("disable")
+    arraySizeSlider.classList.add("disable")
+    document.getElementById("myDropDown").classList.add("disable")
 
+}
+
+function enableClicks() {
+    Randomize.classList.remove("disable");
+    Start.classList.remove("disable");
+    visualizationSpeedSlider.classList.remove("disable")
+    arraySizeSlider.classList.remove("disable")
+    document.getElementById("myDropDown").classList.remove("disable")
+    algorithm=""
+
+}
 
 function createRandomArray(randomArray, sizeOfArray) {
     randomArray=[]
@@ -51,7 +85,6 @@ function addArrayBars(setSize) {
         newBar.style.backgroundColor="#933dc9"
         newBar.style.display="inline-block"
         ArrayBar.push(newBar)
-        // arrayBar.appendChild(newBar);
     }
     return ArrayBar
     
@@ -68,59 +101,61 @@ function removeAllChild() {
 Randomize.addEventListener("click",()=>{
     removeAllChild()
     setSizeOfArray=Math.floor((Math.random()*53)+100)
+    document.getElementById("valueOfSize").innerHTML=`Size of the array is ${setSizeOfArray}`
+    arraySizeSlider.value=setSizeOfArray
     speedOfVisualization=Math.floor((Math.random()*5)+1)
+    document.getElementById("valueOfSpeed").innerHTML=`Speed of the visualization is ${speedOfVisualization}`
+    visualizationSpeedSlider.value = speedOfVisualization
     randomArray=createRandomArray(randomArray,setSizeOfArray)
-    addArrayBars(setSizeOfArray)
+    randomArrayBar=addArrayBars(setSizeOfArray)
+    renderAllBars(randomArrayBar)
 })
 
-function swapDivs(strm) {
-    div1=arrayBar.childNodes[0]
-    div1.style.backgroundColor="black"
-    div2=arrayBar.childNodes[7]
-    div2.style.backgroundColor="green"
-}
-
-divtemp=arrayBar.childNodes[1]
-Start.addEventListener("click",()=>{
-    
+Start.addEventListener("click",async ()=>{
+    switch (algorithm) {
+        case "MergeSort":
+            disableClicks()
+            await Sort_by_Merging(randomArray, speedOfVisualization)
+            enableClicks()
+            break;
+        case "QuickSort":
+            disableClicks()
+            await Sort_by_Quick(randomArray, speedOfVisualization)
+            enableClicks()
+            break;
+        case "BubbleSort":
+            disableClicks()
+            await Sort_by_Bubbling(randomArray, speedOfVisualization)
+            enableClicks()
+            break;
+        case "SelectionSort":
+            disableClicks()
+            await Sort_by_Selection(randomArray, speedOfVisualization)
+            enableClicks()
+            break;
+        case "InsertionSort":
+            disableClicks()
+            await Sort_by_Insertion(randomArray, speedOfVisualization)
+            enableClicks()
+            break
+        default:
+            var alertUser = document.getElementById("DivAlert")
+            alertUser.classList.remove("alertDiv")
+            alertUser.classList.add("showAlertDiv")
+            alertUser.innerText="Please select a SORTING ALGORITHM from the dropdown menu and click START"
+            setTimeout(() => {
+                alertUser.innerText=""
+                alertUser.classList.remove("showAlertDiv")
+                alertUser.classList.add("alertDiv")
+            }, 5000);
+            // window.alert("Select a sorting alogrithm from the dropdown menu and click START")
+            break;
+    }
 })
 
 
 randomArray=createRandomArray(randomArray,setSizeOfArray);
 randomArrayBar=addArrayBars(setSizeOfArray)
 renderAllBars(randomArrayBar)
-// swapDivs("wait")
-
-// function movechildren(arrayBar,insertAt,insertFrom) {
-//     var initial_div=arrayBar.childNodes[insertFrom]
-//     for (let index = insertFrom; index > insertAt; index--) {
-//         var newBar = document.createElement("div")
-//         if (index == 0) {
-//             newBar.id=arrayBar.childNodes[index].id
-//             newBar.style.height=arrayBar.childNodes[index].style.height;
-//             newBar.style.width=arrayBar.childNodes[index].style.width;
-        
-//         } else {
-//             newBar.id=arrayBar.childNodes[index-1].id
-//             newBar.style.height=arrayBar.childNodes[index-1].style.height;
-//             newBar.style.width=arrayBar.childNodes[index-1].style.width;
-            
-//         }
-//         newBar.style.borderLeft="1px solid white"
-//         newBar.style.backgroundColor="#933dc9"
-//         newBar.style.display="inline-block"
-    
-//         arrayBar.replaceChild(newBar,arrayBar.childNodes[index])
-        
-//     }
-//     var newBar = document.createElement("div")
-//         newBar.id=initial_div.id
-//         newBar.style.height=initial_div.style.height;
-//         newBar.style.width=initial_div.style.width;
-//         newBar.style.borderLeft="1px solid white"
-//         newBar.style.backgroundColor="#933dc9"
-//         newBar.style.display="inline-block"
-//     arrayBar.replaceChild(newBar,arrayBar.childNodes[insertAt])
-
-// }
-
+document.getElementById("valueOfSize").innerHTML=`Size of the array is ${setSizeOfArray}`
+document.getElementById("valueOfSpeed").innerHTML=`Speed of the visualization is ${speedOfVisualization}`

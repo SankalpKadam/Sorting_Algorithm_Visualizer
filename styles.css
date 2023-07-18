@@ -170,3 +170,29 @@ header{
     height: 72vh;
     /* border: 1px solid white; */
   }
+
+  .alertDiv{
+    display: none;
+    color: #933dc9;
+    border-radius: 20px;
+    font-size: .7rem;
+  }
+
+  .showAlertDiv{
+    display: block;
+    position: absolute;
+    top:40%;
+    left: 30%;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 1rem;
+    height: 50px;
+    padding: 1rem;
+    background-color: #000000;
+  }
+
+  .disable{
+    pointer-events: none;
+    background-color: #eee;
+  }

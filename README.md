@@ -9,4 +9,4 @@ A webpage which helps the user to understand how various sorting algorithms work
     5) You can also the RANDOMIZE button to generate a random size array and random speed of visualization.
 
 # Technologies used
- HTML, CSS, BootStrap, FontAwesome and Javascript
+ HTML, CSS, BootStrap, FontAwesome and Javascript. A visualizer built with plain JS and no frameworks.

@@ -1,6 +1,7 @@
 # Sorting_Algorithm_Visualizer
 A webpage which helps the user to understand how various sorting algorithms work by seeing how each element of the array that is displayed on the webpage is sorted.
 
+
 # How to Use
     1) Select the algorithm from the choices available in the dropdown menu.
     2) Select the size of the array by using the slider provided for the same.
